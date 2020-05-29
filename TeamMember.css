@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,300&family=Lobster&display=swap');
 body {
-    background-color: #DBEBD6;
+    background-color: #EFFBF7;
 }
 h1 {
     text-align: center;
+    font-family: 'Lobster', cursive;
 }
 .employeeimg {
     height:100px;
@@ -15,6 +17,7 @@ h1 {
 .employeename {
     font-weight: bold;
     font-size: 2em;
+    font-family: 'Lobster', cursive;
 }
 .flexbox {
     display: flex;
@@ -26,11 +29,13 @@ h1 {
     margin: 1em 1em;
 }
 .flexitem {
-    border: 1px grove;
+    border: 5px ridge;
     flex: 1 0 0;
     margin: 1em 3em;
     text-align: center;
-    background-color: #E3F9B3;
+    background-color: ivory;
+    border-radius: 30px;
+    font-family: 'Lato', sans-serif;
 }
 .flexitem div {
     padding: 0.5em;
