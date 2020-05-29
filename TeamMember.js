@@ -31,26 +31,55 @@ getJSON('http://sandbox.bittsdevelopment.com/code1/fetchemployees.php',
         } else {
             //make sure we get all the data from the api first
             console.log(data);
+            //How to return the length of an Json object
+            console.log(Object.keys(data).length);
             console.log(data[1].employeefname); //should return Gary
             //project the data onto the screen
-            //Step 1: do 1 first then get the pattern
+            //Step 1: get Gary first to learn the pattern
+            // var name= document.getElementById("name");
+            // var employeebio = document.getElementById("employeebio");
+            // var employeeroles = document.getElementById("employeeroles");
+            // var employee = document.getElementById("employee");
+            // var crown = document.getElementById("crown");
+            // console.log("name");
+            // name.innerHTML = data[1].employeefname + ' ' + data[1].employeelname;
+            // //calculate is
+            // // function isEmployeeFeatured (point) {
+            // //         if (point === "1") {
+            // //             crown.innerHTML = "&#128081";
+            // //         } else {
+            // //             crown.innerHTML = "";
+            // //         }
+            // //     return crown.innerHTML;
+            // // }
+            //
+            // employeebio.innerHTML = data[1].employeebio;
+            // //console.log(data[1].roles.rolename)
+            // //should be roles[0].rolename because roles is an array
+            // employeeroles.innerHTML = data[1].roles[0].rolename;
+            // employeeroles.style.background = data[1].roles[0].rolecolor;
             //Step 2: use the pattern to put it in a loop
-            var name= document.getElementById("name");
-            var employeebio = document.getElementById("employeebio");
-            var employeeroles = document.getElementById("employeeroles");
-            console.log("name");
-            name.innerHTML = data[1].employeefname + ' ' + data[1].employeelname;
-            if (data[1].employeeisfeatured === "1") {
-                var crown = document.getElementById("crown");
-                crown.innerHTML = "&#128081";
-            } else {
-                crown.innerHTML = "";
+            for (var i = 1; i <= Object.keys(data).length; i++) {
+                function isEmployeeFeatured (point) {
+                    if (point === "1") {
+                        return "&#128081";
+                    } else {
+                        return "";
+                    }
+                }
+                var img = "http://sandbox.bittsdevelopment.com/code1/employeepics/" + data[i].employeeid +".jpg";
+                employee.innerHTML +=
+                    "<div class= grid-item>" +
+                        //"<div>" + "<img src=http://sandbox.bittsdevelopment.com/code1/employeepics/1.jpg" + ">" + "</div>" +
+                        "<div class=picture><img class='employeeimg' src=" + img + " alt='Image of employee' /></div>" +
+                        "<div>"+ data[i].employeefname + ' ' + data[i].employeelname +
+                        "<span>" + isEmployeeFeatured (data[i].employeeisfeatured) + "</span>" + "</div>" +
+                        "<div>"+ data[i].employeebio + "</div>" +
+                        "<span class = roleColor>" + data[i].roles[0].rolename + "</span>" +
+                    "</div>";
+                var roleColor = document.getElementsByClassName("roleColor");
+                var employeeimg = document.getElementsByClassName("employeeimg");
+                roleColor[i-1].style.background = data[i].roles[0].rolecolor;
             }
-            employeebio.innerHTML = data[1].employeebio;
-            //console.log(data[1].roles.rolename)
-            //should be roles[0].rolename because roles is an array
-            employeeroles.innerHTML = data[1].roles[0].rolename;
-            employeeroles.style.background = data[1].roles[0].rolecolor
-
         }
     });

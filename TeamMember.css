@@ -1,6 +1,22 @@
-#picture {
+h1 {
+    text-align: center;
+}
+.employeeimg {
     height:100px;
     width:100px;
     border-radius: 50%;
     background: bisque;
+    text-align: center;
+}
+.grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-auto-rows: 1fr;
+    grid-gap: 1rem;
+    margin: 0 auto 3rem;
+    justify-self: auto;
+}
+.grid-item {
+    border: 1px;
+    padding: 20px;
+    text-align: center;
 }
